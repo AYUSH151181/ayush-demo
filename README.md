@@ -1,2 +1,3 @@
-hello this is a new project 
-author - ayush lamba
+This my first repository
+<br>
+Author - ayush lamba(ayush-demo)
