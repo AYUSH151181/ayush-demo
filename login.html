@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Sign Up — EcoVerse Portal</title>
+  <meta name="description" content="Access your EcoVerse student dashboard or school portal. Manage daily missions, track XP, and restore the planet.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 30%, #0c3323 0%, #060913 80%);
+      padding: 24px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(16, 185, 129, 0.15);
+      overflow: hidden;
+      position: relative;
+      z-index: 10;
+    }
+
+    .auth-visual-side {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .auth-form-side {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .role-tab-group {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .role-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .role-tab.active {
+      background: var(--emerald-primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus {
+      border-color: var(--emerald-primary);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .sso-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .sso-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin: 20px 0;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .divider span {
+      padding: 0 12px;
+    }
+
+    @media (max-width: 860px) {
+      .auth-container {
+        grid-template-columns: 1fr;
+      }
+      .auth-visual-side {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="auth-container">
+    
+    <!-- Left Visual Feature Panel -->
+    <div class="auth-visual-side">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom: 30px; display: inline-flex;">
+          <span class="logo-icon">🌍</span>
+          <span>EcoVerse</span>
+        </a>
+
+        <h2 style="font-size: 1.8rem; margin-bottom: 12px;" class="text-gradient-emerald">
+          Welcome Back, Eco Hero!
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+          Log in to complete your daily eco challenges, view your class position on the leaderboard, and unlock real tree planting rewards.
+        </p>
+      </div>
+
+      <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <span style="font-size: 1.5rem;">🌳</span>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Community Impact</div>
+            <div style="font-size: 0.8rem; color: var(--emerald-light);">120,000+ Trees Grown</div>
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: #94a3b8; italic">
+          "Every small action compounds into global restoration."
+        </p>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        <a href="index.html" style="color: var(--emerald-light); text-decoration: none; font-weight: 600;">← Back to Main Website</a>
+      </div>
+    </div>
+
+    <!-- Right Form Side -->
+    <div class="auth-form-side">
+      
+      <!-- Role Tabs -->
+      <div class="role-tab-group">
+        <div class="role-tab active" onclick="setRole(this, 'student')">👨‍🎓 Student</div>
+        <div class="role-tab" onclick="setRole(this, 'educator')">🏫 Educator</div>
+        <div class="role-tab" onclick="setRole(this, 'school')">🏢 Institution</div>
+      </div>
+
+      <h3 style="font-size: 1.4rem; margin-bottom: 6px; color: #fff;" id="form-title">Student Portal Login</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 24px;">Enter your student email or school ID to continue.</p>
+
+      <!-- SSO Option -->
+      <button class="sso-btn" onclick="alert('🎉 Redirecting to Google SSO Login...')">
+        <span>🌐</span>
+        <span>Continue with Google Student Account</span>
+      </button>
+
+      <div class="divider">
+        <span>OR LOGIN WITH EMAIL</span>
+      </div>
+
+      <!-- Auth Form -->
+      <form onsubmit="handleAuthSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" id="email-label">Student Email / Roll No.</label>
+          <input type="text" placeholder="e.g. student@school.edu" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="form-label" style="margin-bottom: 0;">Password</label>
+            <a href="#" onclick="alert('🔒 Reset link sent to your registered email.')" style="font-size: 0.75rem; color: var(--emerald-light);">Forgot?</a>
+          </div>
+          <input type="password" placeholder="••••••••••••" class="form-input" required>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 0.85rem; color: var(--text-secondary);">
+          <input type="checkbox" id="remember" checked style="accent-color: var(--emerald-primary);">
+          <label for="remember">Keep me logged in for 30 days</label>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
+          <span>🚀 Launch Dashboard</span>
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-secondary);">
+        Don't have an account? 
+        <a href="#" onclick="toggleAuthMode(event)" id="toggle-auth-btn" style="color: var(--emerald-light); font-weight: 600;">Sign Up & Start Mission</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Particle canvas script -->
+  <script src="js/particles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new ParticleEngine('particles-canvas');
+    });
+
+    let currentRole = 'student';
+    let isSignUp = false;
+
+    function setRole(element, role) {
+      document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+      element.classList.add('active');
+      currentRole = role;
+      
+      const title = document.getElementById('form-title');
+      const emailLabel = document.getElementById('email-label');
+
+      if (role === 'student') {
+        title.textContent = isSignUp ? 'Student Registration' : 'Student Portal Login';
+        emailLabel.textContent = 'Student Email / Roll No.';
+      } else if (role === 'educator') {
+        title.textContent = isSignUp ? 'Educator Sign Up' : 'Teacher & Faculty Login';
+        emailLabel.textContent = 'Institutional Email';
+      } else {
+        title.textContent = isSignUp ? 'School & College Registration' : 'Institution Admin Login';
+        emailLabel.textContent = 'Admin Email / School Code';
+      }
+    }
+
+    function toggleAuthMode(e) {
+      e.preventDefault();
+      isSignUp = !isSignUp;
+      const toggleBtn = document.getElementById('toggle-auth-btn');
+      const submitBtn = document.querySelector('button[type="submit"] span');
+
+      if (isSignUp) {
+        toggleBtn.textContent = 'Log In Instead';
+        submitBtn.textContent = '🌱 Create Account & Join';
+      } else {
+        toggleBtn.textContent = 'Sign Up & Start Mission';
+        submitBtn.textContent = '🚀 Launch Dashboard';
+      }
+      
+      const activeTab = document.querySelector('.role-tab.active');
+      if (activeTab) setRole(activeTab, currentRole);
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      alert(`🎉 Welcome to EcoVerse! Logged in successfully as ${currentRole.toUpperCase()}. Redirecting to student dashboard...`);
+      window.location.href = 'index.html#dashboard';
+    }
+  </script>
+</body>
+</html>

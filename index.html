@@ -1,2 +1,789 @@
-<p>hello world</p>
-<p>my name is ayush lamba</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoVerse — Gamified AI Environmental Education Platform</title>
+  <meta name="description" content="Empowering students and schools to restore planet Earth through AI learning, gamified missions, quizzes, and real-world environmental action.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Background Particle Canvas Layer -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="header-nav">
+    <nav class="navbar" id="navbar">
+      <a href="#hero" class="logo">
+        <span class="logo-icon">🌍</span>
+        <span>EcoVerse</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#journey" class="nav-link">Journey</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#restoration" class="nav-link">Restoration</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#stats" class="nav-link">Impact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Login</a>
+        <a href="login.html" class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">Start Mission</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-content-wrapper">
+        
+        <div class="hero-text-block">
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span>Next-Gen Gamified Eco Platform</span>
+          </div>
+
+          <h1 class="hero-title">
+            Every Small Action Can <br>
+            <span class="text-gradient-emerald">Save Our Planet.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Join thousands of students learning through AI, exciting missions, quizzes, rewards, and real environmental action. Become an Eco Hero today!
+          </p>
+
+          <div class="hero-buttons">
+            <a href="login.html" class="btn-primary">
+              <span>🌱 Start Your Journey</span>
+            </a>
+            <button class="btn-secondary" data-modal="modal-demo">
+              <span>▶ Watch Demo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Earth Container & Floating Glass Cards -->
+        <div class="earth-3d-wrapper">
+          <canvas id="earth-canvas"></canvas>
+
+          <!-- Floating Glass Cards Around Earth -->
+          <div class="floating-card fc-1">
+            <span class="card-icon">🌱</span>
+            <div>
+              <div>Daily Mission</div>
+              <div class="card-val">Active</div>
+            </div>
+          </div>
+
+          <div class="floating-card fc-2">
+            <span class="card-icon">🔥</span>
+            <div>
+              <div>Streak</div>
+              <div class="card-val">15 Days</div>
+            </div>
+          </div>
+
+          <div class="floating-card fc-3">
+            <span class="card-icon">🏆</span>
+            <div>
+              <div>Earned XP</div>
+              <div class="card-val">2,450 XP</div>
+            </div>
+          </div>
+
+          <div class="floating-card fc-4">
+            <span class="card-icon">🌳</span>
+            <div>
+              <div>Trees Planted</div>
+              <div class="card-val">28 Trees</div>
+            </div>
+          </div>
+
+          <div class="floating-card fc-5">
+            <span class="card-icon">🤖</span>
+            <div>
+              <div>AI Assistant</div>
+              <div class="card-val">Online</div>
+            </div>
+          </div>
+
+          <div class="floating-card fc-6">
+            <span class="card-icon">♻</span>
+            <div>
+              <div>CO₂ Saved</div>
+              <div class="card-val">320 kg</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#journey" class="scroll-indicator">
+          <span>Begin Your Adventure</span>
+          <span class="scroll-arrow">↓</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Forest Journey (Vertical Timeline Section) -->
+  <section class="forest-journey-section" id="journey">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Interactive Storyline</span>
+        </div>
+        <h2 class="section-title">Your Journey Begins Here</h2>
+        <p class="section-desc">
+          Step into the magical forest of learning. Watch your actions transform virtual landscapes into thriving ecosystems.
+        </p>
+      </div>
+
+      <!-- Vertical Timeline Path -->
+      <div class="timeline-vertical">
+        <div class="timeline-line">
+          <div class="timeline-line-progress" id="timeline-progress"></div>
+        </div>
+
+        <!-- Timeline Steps -->
+        <div class="timeline-step">
+          <div class="timeline-node">🌱</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 01</div>
+              <h3 class="timeline-title">Plant Your First Seed</h3>
+              <p class="timeline-desc">Create your Eco Hero profile, set personal conservation targets, and adopt your virtual tree companion.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">📚</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 02</div>
+              <h3 class="timeline-title">Learn Environmental Concepts</h3>
+              <p class="timeline-desc">Engage with AI-curated byte-sized interactive modules on biodiversity, renewable energy, and climate science.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">📝</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 03</div>
+              <h3 class="timeline-title">Complete Interactive Quizzes</h3>
+              <p class="timeline-desc">Test your knowledge through competitive school trivia, speed challenges, and real-world scenario tests.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">🎯</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 04</div>
+              <h3 class="timeline-title">Finish Daily Eco Challenges</h3>
+              <p class="timeline-desc">Execute real-world missions: compost kitchen waste, practice energy conservation, or conduct plastic cleanups.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">⭐</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 05</div>
+              <h3 class="timeline-title">Earn XP & EcoCoins</h3>
+              <p class="timeline-desc">Get rewarded instantly for verified actions! Convert your EcoCoins into real tree plantings and rewards.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">🏅</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 06</div>
+              <h3 class="timeline-title">Unlock Badges & Achievements</h3>
+              <p class="timeline-desc">Collect rare verifiable digital credentials, top your school rankings, and level up your warrior status.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">🌳</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 07</div>
+              <h3 class="timeline-title">Grow Your Virtual Forest</h3>
+              <p class="timeline-desc">Watch your personal and class forests flourish in real-time high definition 3D interactive graphics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node">🌍</div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-step-num">Step 08</div>
+              <h3 class="timeline-title">Restore Planet Earth</h3>
+              <p class="timeline-desc">Join millions of students across 500+ institutions turning climate anxiety into powerful global restoration.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section (Apple Bento Grid) -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Powerful Capabilities</span>
+        </div>
+        <h2 class="section-title">Designed for Next-Gen Learning</h2>
+        <p class="section-desc">
+          State-of-the-art tools combining gaming dynamics, artificial intelligence, and verified real-world environmental impact.
+        </p>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="bento-grid">
+
+        <!-- Card 1: AI Eco Assistant -->
+        <div class="bento-card bento-col-8">
+          <div>
+            <div class="bento-icon">🤖</div>
+            <h3 class="bento-title">AI Eco Assistant</h3>
+            <p class="bento-desc">Smart companion powered by climate LLMs. Asks daily reflective questions, provides personalized study recommendations, and verifies sustainability photos.</p>
+          </div>
+          <div class="bento-interactive-preview">
+            <button class="btn-secondary" data-modal="modal-chat" style="width: 100%; justify-content: center; font-size: 0.9rem;">
+              <span>💬 Test Live AI Assistant</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Daily Reward Wheel -->
+        <div class="bento-card bento-col-4">
+          <div>
+            <div class="bento-icon">🎡</div>
+            <h3 class="bento-title">Daily Reward Wheel</h3>
+            <p class="bento-desc">Spin the wheel every day to win bonus XP, streak shields, and tree growth boosters!</p>
+          </div>
+          <div class="bento-interactive-preview">
+            <button class="btn-primary" data-modal="modal-wheel" style="width: 100%; justify-content: center; font-size: 0.9rem;">
+              <span>🎁 Spin Wheel Demo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Carbon Calculator -->
+        <div class="bento-card bento-col-6">
+          <div>
+            <div class="bento-icon">🌍</div>
+            <h3 class="bento-title">Carbon Footprint Calculator</h3>
+            <p class="bento-desc">Interactive calculator estimating monthly personal emissions and offering customized reduction missions.</p>
+          </div>
+          <div class="bento-interactive-preview">
+            <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #94a3b8; margin-bottom: 4px;">
+                  <span>Daily Commute (Km):</span>
+                  <strong id="val-transport" style="color: #fff;">15 km</strong>
+                </div>
+                <input type="range" id="calc-transport" min="0" max="60" value="15" class="restoration-slider">
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #94a3b8; margin-bottom: 4px;">
+                  <span>Electricity Usage (kWh):</span>
+                  <strong id="val-energy" style="color: #fff;">120 kWh</strong>
+                </div>
+                <input type="range" id="calc-energy" min="20" max="400" value="120" class="restoration-slider">
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(16, 185, 129, 0.15); padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                <span style="font-size: 0.9rem; font-weight: 600;">Estimated Footprint:</span>
+                <span id="carbon-output-val" class="text-gradient-emerald" style="font-size: 1.3rem; font-weight: 800;">118 kg</span>
+              </div>
+              <div id="calc-feedback-msg" style="font-size: 0.8rem; font-weight: 600; color: #34d399; text-align: center;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Eco Mini Games -->
+        <div class="bento-card bento-col-6">
+          <div>
+            <div class="bento-icon">🎮</div>
+            <h3 class="bento-title">Eco Mini Games</h3>
+            <p class="bento-desc">Gamified learning arcades including Waste Sorting Rush, Solar Grid Builder, and Ocean Trash Cleaners.</p>
+          </div>
+          <div class="bento-interactive-preview" style="text-align: center;">
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 12px;">
+              <span class="glass-pill" style="padding: 6px 14px; font-size: 0.8rem;">♻️ Waste Rush</span>
+              <span class="glass-pill" style="padding: 6px 14px; font-size: 0.8rem;">⚡ Solar Grid</span>
+              <span class="glass-pill" style="padding: 6px 14px; font-size: 0.8rem;">🌊 Ocean Clean</span>
+            </div>
+            <button class="btn-secondary" data-modal="modal-auth" style="padding: 10px 20px; font-size: 0.85rem;">Play Arcade Demo</button>
+          </div>
+        </div>
+
+        <!-- Card 5: Activity Verification -->
+        <div class="bento-card bento-col-4">
+          <div class="bento-icon">📸</div>
+          <h3 class="bento-title">AI Activity Verification</h3>
+          <p class="bento-desc">Students upload photos of real-world eco tasks. Computer vision verifies tree planting and recycling in seconds!</p>
+        </div>
+
+        <!-- Card 6: School Rankings -->
+        <div class="bento-card bento-col-4">
+          <div class="bento-icon">🏫</div>
+          <h3 class="bento-title">Inter-School Leaderboards</h3>
+          <p class="bento-desc">Schools and universities compete for prestigious National Green Flag trophies and regional sustainability honors.</p>
+        </div>
+
+        <!-- Card 7: Verified Certificates -->
+        <div class="bento-card bento-col-4">
+          <div class="bento-icon">📜</div>
+          <h3 class="bento-title">Verifiable Credentials</h3>
+          <p class="bento-desc">Earn shareable, verified digital badges and eco-ambassador certificates for university and job applications.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Planet Restoration Simulator Section -->
+  <section class="restoration-section" id="restoration">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Live Restoration Engine</span>
+        </div>
+        <h2 class="section-title">Together We Can Restore Our Home</h2>
+        <p class="section-desc">
+          Drag the interactive restoration slider below to see how combined student missions heal ecosystems, clear smog, and revive wildlife!
+        </p>
+      </div>
+
+      <div class="restoration-display">
+        <div class="health-meter-container">
+          <div class="health-label-wrap">
+            <span>Global Planet Health Meter</span>
+            <span id="health-percent-label" class="text-gradient-emerald" style="font-size: 1.5rem;">40%</span>
+          </div>
+
+          <div class="health-bar-bg">
+            <div class="health-bar-fill" id="health-bar-fill"></div>
+          </div>
+
+          <input type="range" id="restoration-slider" min="0" max="100" value="40" class="restoration-slider">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b; margin-top: 8px;">
+            <span>40% (Polluted Space)</span>
+            <span>70% (Recovery)</span>
+            <span>100% (Lush Paradise)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Dashboard Preview Section -->
+  <section class="dashboard-preview-section" id="dashboard">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Student Interface</span>
+        </div>
+        <h2 class="section-title">Gamified Command Center</h2>
+        <p class="section-desc">
+          A sleek, intuitive dashboard tracking missions, coins, virtual forest growth, and real-time class leaderboards.
+        </p>
+      </div>
+
+      <!-- Dashboard Mockup -->
+      <div class="dashboard-mockup">
+        
+        <!-- Sidebar -->
+        <div class="dash-sidebar">
+          <div class="dash-avatar-card">
+            <div class="avatar-img-placeholder">👨‍🎓</div>
+            <div class="student-name">Aarav Sharma</div>
+            <div class="student-title">Eco Warrior • Level 12</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div class="dash-nav-item active">📊 Dashboard</div>
+            <div class="dash-nav-item">🌱 Daily Missions</div>
+            <div class="dash-nav-item">🌳 Virtual Forest</div>
+            <div class="dash-nav-item">🏆 Leaderboard</div>
+            <div class="dash-nav-item">📜 Certificates</div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard View -->
+        <div class="dash-main-content">
+          
+          <!-- Top Stats Row -->
+          <div class="dash-stats-row">
+            <div class="dash-stat-box">
+              <div class="dash-stat-title">Total XP</div>
+              <div class="dash-stat-val text-gradient-emerald" id="user-xp-display">2,450</div>
+            </div>
+
+            <div class="dash-stat-box">
+              <div class="dash-stat-title">EcoCoins</div>
+              <div class="dash-stat-val text-gradient-gold">980 🪙</div>
+            </div>
+
+            <div class="dash-stat-box">
+              <div class="dash-stat-title">School Rank</div>
+              <div class="dash-stat-val text-gradient-sky">#3 In Class</div>
+            </div>
+          </div>
+
+          <!-- Interactive Widget Grid -->
+          <div class="dash-widget-grid">
+            
+            <!-- Daily Checklist -->
+            <div class="dash-widget">
+              <div class="dash-widget-header">
+                <span>Daily Eco Missions</span>
+                <span class="glass-pill" style="padding: 4px 10px; font-size: 0.75rem; color: #34d399;">+300 XP Available</span>
+              </div>
+
+              <label class="checklist-item">
+                <input type="checkbox" class="dash-checkbox" checked>
+                <span>Segregate Household Waste (+100 XP)</span>
+              </label>
+
+              <label class="checklist-item">
+                <input type="checkbox" class="dash-checkbox">
+                <span>Complete Renewable Energy Quiz (+100 XP)</span>
+              </label>
+
+              <label class="checklist-item">
+                <input type="checkbox" class="dash-checkbox">
+                <span>Plant 1 Seed in School Garden (+100 XP)</span>
+              </label>
+            </div>
+
+            <!-- School Leaderboard -->
+            <div class="dash-widget">
+              <div class="dash-widget-header">
+                <span>School Leaderboard</span>
+                <span style="font-size: 0.8rem; color: #94a3b8;">Weekly</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                  <span>🥇 DPS Delhi</span>
+                  <strong style="color: #34d399;">48,200 XP</strong>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                  <span>🥈 IIT Bombay Campus School</span>
+                  <strong style="color: #38bdf8;">42,150 XP</strong>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(16, 185, 129, 0.15); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                  <span>🥉 St. Xavier's Academy</span>
+                  <strong style="color: #f59e0b;">38,900 XP</strong>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics & Real-World Impact Section -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Verified Impact</span>
+        </div>
+        <h2 class="section-title">Measurable Environmental Change</h2>
+        <p class="section-desc">
+          Real numbers driven by real student action across schools, colleges, and communities nationwide.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👨‍🎓</div>
+          <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+          <div class="stat-label">Active Students</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🏫</div>
+          <div class="stat-number" data-target="500" data-suffix="+">0</div>
+          <div class="stat-label">Partner Schools</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+          <div class="stat-number" data-target="50000" data-suffix="+">0</div>
+          <div class="stat-label">Challenges Completed</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🌳</div>
+          <div class="stat-number" data-target="120000" data-suffix="+">0</div>
+          <div class="stat-label">Trees Grown</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">♻</div>
+          <div class="stat-number" data-target="15" data-suffix=" Tons">0</div>
+          <div class="stat-label">CO₂ Prevented</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Community Voices</span>
+        </div>
+        <h2 class="section-title">Loved by Students & Educators</h2>
+      </div>
+
+      <div class="testimonials-slider">
+        
+        <div class="testimonial-card">
+          <p class="testimonial-quote">"EcoVerse turned environmental science from a boring textbook subject into my favorite daily game! Competing with other schools is addicting."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">👧</div>
+            <div>
+              <div class="user-name">Ananya Roy</div>
+              <div class="user-role">Student, Class 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">"Our campus planted 1,200 real trees in one semester through EcoVerse. Student engagement has skyrocketed by over 300%."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">👨‍🏫</div>
+            <div>
+              <div class="user-name">Prof. Rajesh Kumar</div>
+              <div class="user-role">Environmental Faculty</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">"The AI activity verification ensures authentic student effort. It is hands down the best gamified climate education solution available."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">👩‍💼</div>
+            <div>
+              <div class="user-name">Dr. Meera Sen</div>
+              <div class="user-role">School Principal</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="badge-pill" style="background: rgba(255, 255, 255, 0.1);">
+          <span class="badge-dot"></span>
+          <span>Join The Movement</span>
+        </div>
+
+        <h2 class="cta-title">The Planet Needs Heroes Like You</h2>
+        <p class="cta-subtitle">
+          Ready to transform your school into a beacon of environmental sustainability? Start your mission in less than 2 minutes.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary" data-modal="modal-auth">
+            <span>🌱 Start Learning Free</span>
+          </button>
+          <button class="btn-secondary" data-modal="modal-auth">
+            <span>🚀 Register Your Institution</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <span class="logo-icon">🌍</span>
+            <span>EcoVerse</span>
+          </a>
+          <p class="footer-desc">
+            Next-generation gamified AI platform empowering students, schools, and colleges to actively restore planet Earth.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#journey">Forest Journey</a></li>
+            <li><a href="#features">AI Assistant</a></li>
+            <li><a href="#features">Carbon Calculator</a></li>
+            <li><a href="#dashboard">Student Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Institutions</h4>
+          <ul class="footer-links">
+            <li><a href="#stats">Impact Statistics</a></li>
+            <li><a href="#dashboard">School Leaderboards</a></li>
+            <li><a href="#restoration">Global Restoration</a></li>
+            <li><a href="#hero">Certificates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Newsletter</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">Get weekly sustainability challenges and school leaderboard updates.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('🎉 Thank you for subscribing to EcoVerse updates!');">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+            <button type="submit" class="btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">Join</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 EcoVerse Inc. All rights reserved. Empowering Eco Heroes Worldwide.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#hero">Privacy Policy</a>
+          <a href="#hero">Terms of Service</a>
+          <a href="#hero">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+
+  <!-- 1. AI Eco Assistant Chat Drawer Modal -->
+  <div class="modal-overlay" id="modal-chat">
+    <div class="modal-box">
+      <span class="modal-close">&times;</span>
+      <h3 style="margin-bottom: 16px; font-size: 1.4rem;" class="text-gradient-emerald">🤖 AI Eco Assistant Demo</h3>
+      <div id="chat-messages" style="height: 280px; overflow-y: auto; background: rgba(0, 0, 0, 0.3); padding: 16px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-direction: column; margin-bottom: 16px;">
+        <div class="chat-msg ai-msg" style="background: rgba(15, 23, 42, 0.8); padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; align-self: flex-start; max-width: 85%; border: 1px solid rgba(255, 255, 255, 0.1); color: #34d399;">
+          👋 Hello Eco Hero! I am EcoBot AI. Ask me how to calculate your carbon footprint, how to plant real trees, or request today's daily mission!
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="chat-input" placeholder="Type your question (e.g. 'How do I plant a tree?')..." class="newsletter-input" style="border-radius: 12px;">
+        <button id="chat-send-btn" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Daily Reward Wheel Game Modal -->
+  <div class="modal-overlay" id="modal-wheel">
+    <div class="modal-box" style="text-align: center;">
+      <span class="modal-close">&times;</span>
+      <h3 class="text-gradient-gold" style="font-size: 1.6rem; margin-bottom: 8px;">🎡 Daily Reward Wheel</h3>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Spin the wheel once a day to win free XP, coins, and tree boosters!</p>
+      
+      <div class="wheel-container">
+        <canvas id="reward-wheel-canvas" width="280" height="280" class="wheel-canvas"></canvas>
+        <button id="spin-wheel-btn" class="btn-primary" style="padding: 12px 36px; font-size: 1rem; margin-top: 10px;">
+          <span>🎯 Spin Now!</span>
+        </button>
+        <div id="wheel-result" style="font-size: 1rem; font-weight: 700; margin-top: 10px; min-height: 24px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Watch Demo Video Trailer Modal -->
+  <div class="modal-overlay" id="modal-demo">
+    <div class="modal-box" style="max-width: 800px; padding: 24px;">
+      <span class="modal-close">&times;</span>
+      <h3 style="margin-bottom: 16px;" class="text-gradient-sky">▶ EcoVerse Platform Demo Presentation</h3>
+      <div style="aspect-ratio: 16/9; background: #000; border-radius: 16px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.15);">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 4rem; margin-bottom: 10px; animation: pulse-glow 2s infinite;">🌍</div>
+          <h4 style="color: #fff; font-size: 1.3rem;">EcoVerse Interactive Experience</h4>
+          <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 6px;">Smart India Hackathon Winning Architecture • AI + Gamification</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Login / Start Mission Onboarding Modal -->
+  <div class="modal-overlay" id="modal-auth">
+    <div class="modal-box" style="max-width: 440px;">
+      <span class="modal-close">&times;</span>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span style="font-size: 2.5rem;">🌍</span>
+        <h3 style="font-size: 1.5rem; margin-top: 8px;" class="text-gradient-emerald">Welcome to EcoVerse</h3>
+        <p style="color: #94a3b8; font-size: 0.85rem;">Select your role to launch your eco mission</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <button class="btn-secondary" onclick="alert('🎉 Welcome Student Eco Hero! Dashboard session started.')" style="justify-content: center;">
+          <span>👨‍🎓 Student Sign In</span>
+        </button>
+        <button class="btn-primary" onclick="alert('🏫 Welcome Educator! Institution portal activated.')" style="justify-content: center;">
+          <span>🏫 School / College Portal</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/earth3d.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
