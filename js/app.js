@@ -9,8 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const earth = new Earth3D('earth-canvas');
   const particles = new ParticleEngine('particles-canvas');
 
-  // 2. Navbar Scroll Morphing
+  // 2. Navbar Scroll Morphing & Mobile Menu Toggle
   const navbar = document.getElementById('navbar');
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (mobileBtn && navLinks) {
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+  }
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -20,7 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 3. Storytelling Scroll Transformation Engine
     handleScrollStorytelling(earth);
+    updateActiveNavLink();
   });
+
+  function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.scrollY;
+
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute('id');
+      const navLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+
+      if (navLink) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLink.classList.add('active');
+        } else {
+          navLink.classList.remove('active');
+        }
+      }
+    });
+  }
 
   // Storytelling Scroll Handler
   function handleScrollStorytelling(earthInstance) {

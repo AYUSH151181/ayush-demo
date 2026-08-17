@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login & Sign Up — EcoVerse Portal</title>
-  <meta name="description" content="Access your EcoVerse student dashboard or school portal. Manage daily missions, track XP, and restore the planet.">
-  
+  <meta name="description"
+    content="Access your EcoVerse student dashboard or school portal. Manage daily missions, track XP, and restore the planet.">
+
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
-  
+
   <style>
     body {
       min-height: 100vh;
@@ -148,7 +153,8 @@
       margin: 20px 0;
     }
 
-    .divider::before, .divider::after {
+    .divider::before,
+    .divider::after {
       content: '';
       flex: 1;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -162,19 +168,21 @@
       .auth-container {
         grid-template-columns: 1fr;
       }
+
       .auth-visual-side {
         display: none;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Particle Background Canvas -->
   <canvas id="particles-canvas"></canvas>
 
   <div class="auth-container">
-    
+
     <!-- Left Visual Feature Panel -->
     <div class="auth-visual-side">
       <div>
@@ -187,11 +195,13 @@
           Welcome Back, Eco Hero!
         </h2>
         <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
-          Log in to complete your daily eco challenges, view your class position on the leaderboard, and unlock real tree planting rewards.
+          Log in to complete your daily eco challenges, view your class position on the leaderboard, and unlock real
+          tree planting rewards.
         </p>
       </div>
 
-      <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <div
+        style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
           <span style="font-size: 1.5rem;">🌳</span>
           <div>
@@ -204,14 +214,15 @@
         </p>
       </div>
 
-      <div style="font-size: 0.85rem; color: var(--text-muted);">
-        <a href="index.html" style="color: var(--emerald-light); text-decoration: none; font-weight: 600;">← Back to Main Website</a>
+      <div style="font-size:0.8rem; color:var(--text-muted);">
+        <a href="index.html" style="color:var(--emerald-light); text-decoration:none; font-weight: 600;">← Back to Main
+          Website</a>
       </div>
     </div>
 
     <!-- Right Form Side -->
     <div class="auth-form-side">
-      
+
       <!-- Role Tabs -->
       <div class="role-tab-group">
         <div class="role-tab active" onclick="setRole(this, 'student')">👨‍🎓 Student</div>
@@ -220,7 +231,8 @@
       </div>
 
       <h3 style="font-size: 1.4rem; margin-bottom: 6px; color: #fff;" id="form-title">Student Portal Login</h3>
-      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 24px;">Enter your student email or school ID to continue.</p>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 24px;">Enter your student email or
+        school ID to continue.</p>
 
       <!-- SSO Option -->
       <button class="sso-btn" onclick="alert('🎉 Redirecting to Google SSO Login...')">
@@ -242,24 +254,28 @@
         <div class="form-group">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <label class="form-label" style="margin-bottom: 0;">Password</label>
-            <a href="#" onclick="alert('🔒 Reset link sent to your registered email.')" style="font-size: 0.75rem; color: var(--emerald-light);">Forgot?</a>
+            <a href="#" onclick="alert('🔒 Reset link sent to your registered email.')"
+              style="font-size: 0.75rem; color: var(--emerald-light);">Forgot?</a>
           </div>
           <input type="password" placeholder="••••••••••••" class="form-input" required>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 0.85rem; color: var(--text-secondary);">
+        <div
+          style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 0.85rem; color: var(--text-secondary);">
           <input type="checkbox" id="remember" checked style="accent-color: var(--emerald-primary);">
           <label for="remember">Keep me logged in for 30 days</label>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
+        <button type="submit" class="btn-primary"
+          style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
           <span>🚀 Launch Dashboard</span>
         </button>
       </form>
 
       <div style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-secondary);">
-        Don't have an account? 
-        <a href="#" onclick="toggleAuthMode(event)" id="toggle-auth-btn" style="color: var(--emerald-light); font-weight: 600;">Sign Up & Start Mission</a>
+        Don't have an account?
+        <a href="#" onclick="toggleAuthMode(event)" id="toggle-auth-btn"
+          style="color: var(--emerald-light); font-weight: 600;">Sign Up & Start Mission</a>
       </div>
 
     </div>
@@ -280,7 +296,7 @@
       document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
       element.classList.add('active');
       currentRole = role;
-      
+
       const title = document.getElementById('form-title');
       const emailLabel = document.getElementById('email-label');
 
@@ -309,7 +325,7 @@
         toggleBtn.textContent = 'Sign Up & Start Mission';
         submitBtn.textContent = '🚀 Launch Dashboard';
       }
-      
+
       const activeTab = document.querySelector('.role-tab.active');
       if (activeTab) setRole(activeTab, currentRole);
     }
@@ -321,4 +337,5 @@
     }
   </script>
 </body>
+
 </html>
