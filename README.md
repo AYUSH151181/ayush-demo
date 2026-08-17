@@ -11,4 +11,5 @@ author - kavy(ayush-demo)
 I am lamba ayush from rajkot
 I am from gujrat
 my friend name is vrushabh
-his come from kach
+his come from kutch
+my brother name is kavy
